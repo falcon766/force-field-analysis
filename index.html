@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Force Field Analysis Tool</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6295/6295417.png" type="image/png">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1><i class="fas fa-balance-scale"></i> Force Field Analysis</h1>
+            <p class="subtitle">Analyze the forces for and against your decision</p>
+        </header>
+
+        <div class="main-content">
+            <div class="decision-section">
+                <label for="decision-input"><i class="fas fa-lightbulb"></i> What decision or change are you analyzing?</label>
+                <input type="text" id="decision-input" placeholder="e.g., Implementing a new software system" autofocus>
+            </div>
+
+            <div class="forces-container">
+                <div class="forces-column driving">
+                    <h2><i class="fas fa-arrow-right"></i> Driving Forces</h2>
+                    <p class="description"><i class="fas fa-info-circle"></i> Factors that push toward the change</p>
+                    <div class="forces-list" id="driving-forces-list">
+                        <!-- Force items will be added here -->
+                    </div>
+                    <div class="add-force">
+                        <input type="text" id="driving-force-input" placeholder="Add a driving force">
+                        <div class="force-score">
+                            <label>Strength:</label>
+                            <select id="driving-force-score">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5" selected>5</option>
+                            </select>
+                        </div>
+                        <button id="add-driving-force" class="add-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+
+                <div class="forces-column restraining">
+                    <h2><i class="fas fa-arrow-left"></i> Restraining Forces</h2>
+                    <p class="description"><i class="fas fa-info-circle"></i> Factors that push against the change</p>
+                    <div class="forces-list" id="restraining-forces-list">
+                        <!-- Force items will be added here -->
+                    </div>
+                    <div class="add-force">
+                        <input type="text" id="restraining-force-input" placeholder="Add a restraining force">
+                        <div class="force-score">
+                            <label>Strength:</label>
+                            <select id="restraining-force-score">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5" selected>5</option>
+                            </select>
+                        </div>
+                        <button id="add-restraining-force" class="add-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="analysis-section">
+                <div class="score-summary">
+                    <div class="score-item">
+                        <h3><i class="fas fa-arrow-right"></i> Driving Forces</h3>
+                        <div class="score" id="driving-score">0</div>
+                    </div>
+                    <div class="score-item">
+                        <h3><i class="fas fa-arrow-left"></i> Restraining Forces</h3>
+                        <div class="score" id="restraining-score">0</div>
+                    </div>
+                    <div class="score-item result">
+                        <h3><i class="fas fa-balance-scale"></i> Net Force</h3>
+                        <div class="score" id="net-score">0</div>
+                    </div>
+                </div>
+                <div class="visualization" id="visualization">
+                    <!-- Visualization will be rendered here -->
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button id="save-btn" class="action-btn"><i class="fas fa-save"></i> Save Analysis</button>
+                <button id="export-btn" class="action-btn"><i class="fas fa-file-export"></i> Export as PDF</button>
+                <button id="clear-btn" class="action-btn"><i class="fas fa-trash"></i> Clear All</button>
+            </div>
+            <div class="app-footer">
+                <p>Created with <i class="fas fa-heart"></i> | Force Field Analysis Tool</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Save Your Analysis</h2>
+            <label for="analysis-name">Name your analysis:</label>
+            <input type="text" id="analysis-name" placeholder="e.g., Project X Implementation">
+            <button id="confirm-save" class="action-btn"><i class="fas fa-check"></i> Save</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
